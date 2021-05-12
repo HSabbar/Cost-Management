@@ -1,5 +1,5 @@
-
-# Set up environment
+# Cost Management
+## Set up environment
         
         $ python -m virtualenv venv 
         $ .\venv\Scripts\activate.ps1
