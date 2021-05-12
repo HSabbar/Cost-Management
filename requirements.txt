@@ -1,0 +1,13 @@
+pandas
+virtualenv 
+zlib
+boto3
+google-auth
+google.cloud
+pyarrow
+azure-storage-blob
+urllib
+azure-mgmt-consumption
+azure.identity
+yaml
+itertools
