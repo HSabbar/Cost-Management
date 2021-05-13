@@ -2,7 +2,7 @@ from azure.mgmt.consumption import ConsumptionManagementClient
 from azure.identity import AzureCliCredential
 
 from itertools import tee
-from datetime import datetime
+from datetime import datetime 
 import pandas as pd
 
 import os
@@ -69,9 +69,9 @@ def run():
     path_csv_file = 'data/Azure-cost-management.csv'
     date_filter = "properties/usageStart ge '2021-04-01' AND properties/usageStart lt '2021-04-30'" 
     
-    print("Get data by date range '2021-04-01' and '2021-04-30'")
+    print("Get data by date range '2021-05-01' and '2021-06-01'")
     azure_usage.run_by_date(date_filter, path_csv_file)    
-    print("Done : create csv successful fun() date_filter")
+    print('finished getting data from Azure')
 
     #print("Get data by billing period 202105")
     #azure_usage.run_by_billing_period("202105")

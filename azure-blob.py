@@ -25,6 +25,8 @@ def azure_download_obj_blob(url=None):
     else:
         return None
 
+print('Start getting data from Azure')
 path_obj = "/exports/dialympn/CostManangement/20210401-20210430/CostManangement_0fe527e1-a9b3-4b88-8075-cc788c672c78.csv"
 df = azure_download_obj_blob(path_obj)
 df.to_csv('data/Azure-blob-cost-management.csv', encoding='utf-8', index=False)
+print('finished getting data from Azure')
