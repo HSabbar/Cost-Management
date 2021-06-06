@@ -1,5 +1,6 @@
 from azure.mgmt.consumption import ConsumptionManagementClient
 from azure.identity import AzureCliCredential
+from azure.identity import ClientSecretCredential
 
 from itertools import tee
 from datetime import datetime 
@@ -21,11 +22,17 @@ import yaml
 class Usage:
 
     def __init__(self):
-        subscriptionId = os.environ['AZURE_SUBSCRIPTION_ID']
-        self.scope = "subscriptions/" + subscriptionId
+        #azure_credential = AzureCliCredential()
+        # Retrieve the IDs and secret to use with ClientSecretCredential
+        subscription_id = os.environ["AZURE_SUBSCRIPTION_ID"]
+        tenant_id = os.environ["AZURE_TENANT_ID"]
+        client_id = os.environ["AZURE_CLIENT_ID"]
+        client_secret = os.environ["AZURE_CLIENT_SECRET"]
+        self.scope = "subscriptions/" + subscription_id
 
-        azure_credential = AzureCliCredential()
-        self.consumption_client =  ConsumptionManagementClient(azure_credential, subscriptionId)
+        credential = ClientSecretCredential(tenant_id=tenant_id, client_id=client_id, client_secret=client_secret)
+
+        self.consumption_client =  ConsumptionManagementClient(credential, subscription_id)
 
     def run_by_date(self, date_filter, path_csv_file):
         usages = self.consumption_client.usage_details.list(self.scope, filter=date_filter ) #, metric="usage")
@@ -66,8 +73,8 @@ class Usage:
 
 def run():
     azure_usage = Usage()
-    path_csv_file = 'data/Azure-cost-management.csv'
-    date_filter = "properties/usageStart ge '2021-04-01' AND properties/usageStart lt '2021-04-30'" 
+    path_csv_file = 'data/Azure-cost-management-today.csv'
+    date_filter = "properties/usageStart ge '2021-05-01' AND properties/usageStart lt '2021-05-21'" 
     
     print("Get data by date range '2021-05-01' and '2021-06-01'")
     azure_usage.run_by_date(date_filter, path_csv_file)    

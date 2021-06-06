@@ -4,6 +4,8 @@ import zlib
 import io
 import os
 import re
+import datetime
+import sys 
 
 
 
@@ -25,10 +27,13 @@ def get_csv(s3, bucket_name, key):
 
 date = "20210501-20210601"
 s3_obj = s3.Bucket(bucket_name).objects.filter(Prefix="/Hourly-detailled-report/")
+print(date)
 path_selected = [p for p in s3_obj if( bool(re.compile(rf'(?<={date})(.*)(?=csv)').search(p.key)))]
+
+
 if len(path_selected) :
     df = get_csv(s3, bucket_name, path_selected[0].key)
-df.to_csv('data/aws-cost-management.csv', encoding='utf-8', index=False)
+df.to_csv('data/AWS-cost-management.csv', encoding='utf-8', index=False)
 print('finished getting data from AWS')
 
 """

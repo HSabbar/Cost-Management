@@ -1,4 +1,9 @@
+ntp
 pandas
+dash
+dash_core_components
+dash-bootstrap-components
+dash_html_components
 boto3
 google-auth
 google.cloud

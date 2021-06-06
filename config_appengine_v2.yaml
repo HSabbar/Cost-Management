@@ -1,0 +1,14 @@
+# Run by Python 3.7
+runtime: python38
+# Machine config  https://cloud.google.com/appengine/docs/standard
+instance_class: B2
+manual_scaling:
+  instances: 1
+# Timeout is 60sec
+entrypoint: python dashbord.py
+# Instance name
+service: dashapp-cost-management-v1
+handlers:
+  - url: /.*
+    script: auto
+    secure: always

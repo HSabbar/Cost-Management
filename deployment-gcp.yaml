@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+    name: cost-management-deploy
+    labels:
+        app: flask
+    
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: flask
+  
+template:
+    metadata:
+    labels:
+        app: flask
+    spec:
+        containers:
+        - name: cost-management
+        image: gcr.io/stoked-droplet-312714/cost-management-app:v1
+        ports:
+        - containerPort: 8050
+
+---
+kind: Service
+apiVersion: v1
+
+metadata:
+    name: cost-management-service
+    labels:
+        app: flask
+spec:
+    selector:
+        app: flask
+    ports:
+    - port: 8050
+    protocol: TCP
+    
+type: LoadBalancer #NodePort
