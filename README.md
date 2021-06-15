@@ -35,8 +35,6 @@
 
   ###### Créer un compte de service plus une clé suivi les étapes : https://cloud.google.com/billing/v1/requests 
 
-  ###### CrÃ©er un compte de service plus une clÃ© suivi les Ã©tapes : https://cloud.google.com/billing/v1/requests 
-
        $ setx  GOOGLE_APPLICATION_CREDENTIALS path/to/credentials.json
 
     
