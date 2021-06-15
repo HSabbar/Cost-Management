@@ -32,11 +32,11 @@
 
 ## Google cloud platform  
   #### Set variable environnement 
-<<<<<<< HEAD
-  ###### Cr�er un compte de service plus une cl� suivi les �tapes : https://cloud.google.com/billing/v1/requests 
-=======
+
   ###### Créer un compte de service plus une clé suivi les étapes : https://cloud.google.com/billing/v1/requests 
->>>>>>> af8bc4f094741f1f12965a8f3b0f9d5a7b3d0f0a
+
+  ###### CrÃ©er un compte de service plus une clÃ© suivi les Ã©tapes : https://cloud.google.com/billing/v1/requests 
+
        $ setx  GOOGLE_APPLICATION_CREDENTIALS path/to/credentials.json
 
     
